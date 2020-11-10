@@ -24,9 +24,7 @@ public class App extends JFrame {
         
         for(int i = 0; i < words.length; i++) {
             if(new StringBuilder(words[i]).reverse().toString().equals(words[i])) {
-                int length = pWords.length;
-                pWords = new String[length + 1];
-                pWords[length] = words[i];
+                pWords = push(pWords, words[i]);
             }
         }
 
@@ -70,5 +68,12 @@ public class App extends JFrame {
             txt = txt + "\n" + arr[i];
         }
         return txt;
+    }
+
+    private static String[] push(String[] array, String push) {
+        String[] longer = new String[array.length + 1];
+        System.arraycopy(array, 0, longer, 0, array.length);
+        longer[array.length] = push;
+        return longer;
     }
 }
